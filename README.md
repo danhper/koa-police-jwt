@@ -1,7 +1,7 @@
 # koa-police-jwt
 
-[![npm version](https://badge.fury.io/js/koa-police-jwt.svg)](http://badge.fury.io/js/koa-police-jwt)
-[![Build Status](https://travis-ci.org/tuvistavie/koa-police-jwt.svg)](https://travis-ci.org/tuvistavie/koa-police-jwt) [![Coverage Status](https://coveralls.io/repos/tuvistavie/koa-police-jwt/badge.svg?coveralls)](https://coveralls.io/r/tuvistavie/koa-police-jwt)
+[![npm version](https://badge.fury.io/js/koa-police-jwt.svg?time=20150608163600)](http://badge.fury.io/js/koa-police-jwt)
+[![Build Status](https://travis-ci.org/tuvistavie/koa-police-jwt.svg)](https://travis-ci.org/tuvistavie/koa-police-jwt) [![Coverage Status](https://coveralls.io/repos/tuvistavie/koa-police-jwt/badge.svg?time=20150608163600)](https://coveralls.io/r/tuvistavie/koa-police-jwt)
 
 A [koa-police](https://github.com/tuvistavie/koa-police) strategy to login users with [JSON Web Token](http://jwt.io/).
 
