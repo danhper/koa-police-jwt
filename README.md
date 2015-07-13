@@ -98,3 +98,10 @@ app.use(koaPolice({
 ```
 
 `jwtStrategy` will always fail for the `admin` scope.
+
+### Token expiration
+
+The `exp` field of the payload will be checked, and an error will
+be raised if the token is expired.
+If you want to skip this validation, you can set the `skipExp` option
+to `true` during the initialization.
