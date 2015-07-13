@@ -4,16 +4,17 @@ const assert              = require('assert');
 const AuthenticationError = require('koa-police').AuthenticationError;
 const jwt                 = require('jwt-simple');
 
-const decodeToken = function (token, secret, expireField) {
+const decodeToken = function (token, secret, skipExp) {
+  let decoded;
   try {
-    let decoded = jwt.decode(token, secret);
-    if (expireField && Date.parse(decoded[expireField]) <=  Date.now()) {
-      throw new AuthenticationError('token expired');
-    }
-    return decoded;
+    decoded = jwt.decode(token, secret);
   } catch (err) {
     throw new AuthenticationError('could not decode token');
   }
+  if (!skipExp && decoded.exp && Date.parse(decoded.exp) <=  Date.now()) {
+    throw new AuthenticationError('token expired');
+  }
+  return decoded;
 };
 
 const parseHeader = function (authHeader) {
@@ -31,6 +32,8 @@ module.exports = function (options) {
   if (!options.header && !options.query && !options.getToken) {
     options.header = 'authorization';
   }
+
+  options.skipExp = options.skipExp === undefined ? false : options.skipExp;
 
   const isScopeAllowed = function (scope) {
     if (!options.allowedScopes) {
@@ -55,7 +58,7 @@ module.exports = function (options) {
         throw new AuthenticationError('token has been revoked');
       }
     }
-    return decodeToken(token, secret, options.expireField);
+    return decodeToken(token, secret, options.skipExp);
   };
 
   const findToken = function *(request) {

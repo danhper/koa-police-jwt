@@ -24,8 +24,7 @@ const withAuthorization = function (token) {
 describe('koa-police-jwt', function () {
   beforeEach(function () {
     strategy = koaPoliceJwt({
-      secret: secret,
-      expireField: 'expiresAt'
+      secret: secret
     });
   });
   beforeEach(function () {
@@ -74,7 +73,7 @@ describe('koa-police-jwt', function () {
   });
 
   context('with expired token', function () {
-    var token = jwt.encode({expiresAt: new Date()}, secret);
+    var token = jwt.encode({exp: new Date()}, secret);
     withAuthorization(token);
     it('should throw', function () {
       return expect(co(strategy.authenticate(this.ctx, 'whatever'))).to.be.rejected;
