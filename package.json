@@ -1,6 +1,6 @@
 {
   "name": "koa-police-jwt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "jwt strategy for koa-police",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/tuvistavie/koa-police-jwt#readme",
   "peerDependencies": {
-    "koa-police": "0.1.x"
+    "koa-police": "0.2.x"
   },
   "dependencies": {
     "jwt-simple": "^0.3.0"
